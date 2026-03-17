@@ -1,0 +1,165 @@
+<!-- index.html (FULL) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drink Shop</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+</head>
+
+<body class="bg-[#f8f9fa] min-h-screen flex flex-col items-center pb-16 overflow-x-hidden">
+
+  <!-- HEADER -->
+  <header class="w-full bg-[#1a1a1a] h-12 sticky top-0 flex items-center px-4 z-40 border-b-2 border-transparent shadow-md">
+    <button id="menu-btn" class="flex flex-col gap-[4px] cursor-pointer pl-2 hover:opacity-70 transition-opacity" aria-label="Menu">
+      <span class="w-7 h-1 bg-white block rounded-sm"></span>
+      <span class="w-7 h-1 bg-white block rounded-sm"></span>
+      <span class="w-7 h-1 bg-white block rounded-sm"></span>
+    </button>
+
+    <div class="absolute left-1/2 -translate-x-1/2 top-0 bg-[#1a1a1a] text-3xl px-5 py-1 pb-4 rounded-b-[5rem] shadow-lg">
+      <img src="Image/logo/logo.png" class="w-20" alt="Logo" />
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="fixed inset-0 bg-[#1a1a1a]/95 backdrop-blur-sm z-50 transform -translate-x-full transition-transform duration-300 flex flex-col pt-24 px-12">
+    <button id="close-menu-btn" class="absolute top-6 left-6 text-white text-5xl font-light hover:text-[#e04f43] transition-colors leading-none">&times;</button>
+
+    <nav class="flex flex-col gap-8 text-white text-4xl font-bold mt-10">
+      <a href="#hero-section" class="menu-link hover:text-[#e04f43] transition-colors w-fit">Home</a>
+      <a href="#featured-section" class="menu-link hover:text-[#e04f43] transition-colors w-fit">Featured Drinks</a>
+      <a href="#aspects-section" class="menu-link hover:text-[#e04f43] transition-colors w-fit">Our Values</a>
+      <a href="menu.html" class="menu-link hover:text-[#e04f43] transition-colors w-fit">Search Menu</a>
+    </nav>
+  </div>
+
+  <!-- HERO (SLIDING CAROUSEL) -->
+  <main id="hero-section" class="w-full max-w-7xl mx-auto px-6 mt-10 relative scroll-mt-20">
+    <div class="hero-shell relative overflow-hidden w-full shadow-sm rounded-md">
+
+      <!-- HERO SLIDER -->
+      <div id="hero-slider" class="hero-slider">
+        <div id="hero-track" class="hero-track"></div>
+      </div>
+
+      <!-- Ambient floating layer -->
+      <div class="ambient-layer pointer-events-none">
+        <div class="ambient-chip c1">Summer Picks</div>
+        <div class="ambient-chip c2">Limited</div>
+        <div class="ambient-chip c3">New</div>
+      </div>
+
+      <!-- NEW badge -->
+      <div class="absolute top-6 -right-10 bg-[#e04f43] text-white text-sm font-bold py-1 px-12 rotate-[50deg] shadow-md flex items-center gap-1 tracking-wider border-y border-white/20">
+        ⭐ NEW
+      </div>
+
+      <!-- Quick actions (side boxes) -->
+      <div class="hero-actions">
+        <a href="menu.html" class="hero-action-card">
+          <div class="hero-action-title">Search Menu</div>
+          <div class="hero-action-sub">Find your drink fast</div>
+        </a>
+        <a href="#featured-section" class="hero-action-card">
+          <div class="hero-action-title">Featured</div>
+          <div class="hero-action-sub">Today’s highlights</div>
+        </a>
+        <a href="#aspects-section" class="hero-action-card">
+          <div class="hero-action-title">Our Values</div>
+          <div class="hero-action-sub">What we stand for</div>
+        </a>
+      </div>
+
+      <!-- HERO DOTS -->
+      <div id="hero-dots" class="absolute bottom-6 left-6 flex gap-6"></div>
+
+    </div>
+  </main>
+
+  <!-- FEATURED -->
+  <section id="featured-section" class="w-full mt-28 scroll-mt-24 featured-band">
+    <div class="w-full max-w-7xl mx-auto px-6 relative">
+      <div class="featured-panel w-full h-[560px] relative rounded-sm">
+
+        <!-- LEFT NAME WHEEL -->
+        <div class="absolute left-10 top-20 z-20 select-none">
+          <div id="name-wheel" class="relative w-[360px] h-[384px] overflow-hidden">
+            <div id="wheel-clip" class="relative w-full h-full"></div>
+          </div>
+
+          <div class="mt-6 flex gap-3">
+            <button id="wheel-up" class="bg-[#1a1a1a] text-white px-5 py-3 hover:bg-[#e04f43] transition rounded-sm">↑</button>
+            <button id="wheel-down" class="bg-[#1a1a1a] text-white px-5 py-3 hover:bg-[#e04f43] transition rounded-sm">↓</button>
+          </div>
+        </div>
+
+        <!-- CENTER MAIN DRINK -->
+        <div class="absolute left-1/2 -translate-x-1/2 -top-16 z-30 flex flex-col items-center pointer-events-none">
+          <img id="main-drink-img" src="Image/rm bg/Mango Passion Blast.png" alt="Selected Drink" class="main-drink" />
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div id="desc-card" class="absolute right-6 top-12 w-[440px] h-[300px] p-2 flex flex-col z-20 text-[#1a1a1a] rounded-sm desc-card">
+          <h1 id="drink-title" class="text-5xl font-extrabold leading-tight mb-4">Drink Name</h1>
+          <p id="drink-desc" class="text-[#2a2a2a] text-xl leading-relaxed flex-1 overflow-hidden desc-clamp">Description goes here.</p>
+        </div>
+
+        <!-- THUMB STRIP (behind the main drink visually) -->
+        <div id="thumb-strip" class="thumb-strip">
+          <div id="thumb-track" class="thumb-track"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ASPECTS -->
+  <main id="aspects-section" class="w-full flex-grow flex flex-col mt-28 border border-gray-200 max-w-7xl mx-auto shadow-sm z-30 scroll-mt-24 bg-white">
+    <div id="interactive-accordion" class="flex w-full h-[420px]"></div>
+  </main>
+
+  <main id="visit-us-section" class="w-full max-w-7xl mx-auto px-6 mt-28 mb-20 scroll-mt-24 z-30 relative">
+  
+  <div class="flex flex-col md:flex-row w-full bg-[#f4f4f4] shadow-md rounded-md overflow-hidden border border-gray-200">
+    
+    <div class="w-full md:w-1/2 min-h-[350px] relative">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.491049231334!2d120.28782837538573!3d22.672756979291854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e05a5ecfbbf11%3A0x459c4a74673229e2!2sHaisheng%20Village%2C%20Zuoying%20District%2C%20Kaohsiung%20City%2C%20813!5e0!3m2!1sen!2stw!4v1773209677970!5m2!1sen!2stw%22%20width=%22600%22%20height=%22450%22%20style=%22border:0;%22%20allowfullscreen=%22%22%20loading=%22lazy%22%20referrerpolicy=%22no-referrer-when-downgrade" 
+        class="absolute top-0 left-0 w-full h-full border-0  opacity-90" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="w-full md:w-1/2 p-10 md:p-14 flex flex-col justify-center gap-8 text-[#1a1a1a]">
+      
+      <div>
+        <h2 class="text-4xl font-extrabold mb-2 tracking-tight">Visit Us</h2>
+        <p class="text-[#2a2a2a] text-xl font-medium">Zuoying District<br>Kaohsiung City, 813</p>
+      </div>
+
+      <div>
+        <h3 class="text-2xl font-bold mb-2">Hours</h3>
+        <p class="text-gray-600 text-lg font-medium">Mon - Fri: 8:00 AM - 9:00 PM</p>
+        <p class="text-gray-600 text-lg font-medium">Sat - Sun: 9:00 AM - 10:00 PM</p>
+      </div>
+
+      <div>
+        <h3 class="text-2xl font-bold mb-2">Contact</h3>
+        <p class="text-gray-600 text-lg font-medium">Phone: (555) 123-4567</p>
+        <p class="text-gray-600 text-lg font-medium">Email: hello@drinkshop.com</p>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>
