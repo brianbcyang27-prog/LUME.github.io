@@ -274,7 +274,6 @@ html, body { scroll-behavior: smooth; }
   color: rgba(0,0,0,0.55);
 }
 
-
 /* =========================
    UI/UX UPGRADES
 ========================= */
@@ -341,20 +340,6 @@ html, body { scroll-behavior: smooth; }
   to { opacity: 0; transform: translateX(50px); }
 }
 
-/* Mobile Responsiveness for Featured Section */
-@media (max-width: 768px) {
-  .main-drink { height: 350px; } /* Scale down massive image */
-  #name-wheel { width: 200px; height: 280px; } /* Scale down wheel */
-  .featured-panel { height: 400px; }
-  #desc-card {
-    position: relative;
-    right: 0; top: 0;
-    width: 100%; height: auto;
-    text-align: center;
-    margin-top: 180px;
-  }
-}
-
 /* =========================
    CART & TOAST UI
 ========================= */
@@ -397,3 +382,83 @@ html, body { scroll-behavior: smooth; }
 /* Scrollbar for cart list */
 #cart-items-list::-webkit-scrollbar { width: 4px; }
 #cart-items-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+/* =========================
+   📱 MOBILE RESPONSIVE FIXES
+========================= */
+@media (max-width: 768px) {
+  /* -- 1. HERO SECTION -- */
+  /* Make the hero taller on phones so the images look better */
+  .hero-slider { aspect-ratio: 4/5; }
+  /* Hide the side action cards and floating chips on mobile to save space */
+  .hero-actions, .ambient-layer { display: none; } 
+
+  /* -- 2. FEATURED DRINKS SECTION -- */
+  /* Turn the container into a flex column so items stack neatly */
+  .featured-panel { 
+    height: auto; 
+    min-height: 750px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding-bottom: 120px; 
+  }
+  
+  /* Drink Image: Move to the top */
+  #featured-section .absolute.-top-16 {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    order: 1; /* First item in column */
+    margin-top: 2rem;
+  }
+  .main-drink { height: 280px; }
+
+  /* Drink Wheel: Move below the drink and center the text */
+  #featured-section .absolute.left-10.top-20 {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2; /* Second item in column */
+    margin-top: -1rem;
+    z-index: 40;
+  }
+  #name-wheel { width: 100%; height: 160px; }
+  .wheel-item { justify-content: center; } /* Centers the text in the wheel */
+
+  /* Description Card: Move below the wheel */
+  #desc-card {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 90% !important;
+    height: auto !important;
+    text-align: center;
+    order: 3; /* Third item in column */
+    margin-top: 1rem;
+  }
+  #drink-title { font-size: 2rem; }
+  #drink-desc { font-size: 1rem; }
+
+  /* Thumbnails: Keep at bottom but scale down */
+  .thumb-strip { bottom: 0; height: 100px; }
+  .thumb-track { padding: 0 50px; }
+  .thumb-item { width: 60px; height: 90px; }
+
+  /* -- 3. VALUES ACCORDION -- */
+  /* Stack the images vertically instead of horizontally */
+  #interactive-accordion { 
+    flex-direction: column; 
+    height: 600px; 
+  }
+  .accordion-item { 
+    border-right: none !important; /* Remove vertical dividers */
+    border-bottom: 2px solid white; /* Add horizontal dividers */
+  }
+  .accordion-item:last-child { border-bottom: none; }
+}
